@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 1003
+
+#向eureka注册网关服务：
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+        defaultZone: http://localhost:1002/eureka/
+
+#配置zuul路由映射：
+zuul:
+  prefix:  /
+  routes:
+    url:
+    todoListService: /todoListService/**
+    accountService: /accountService/**
+  ignored-services: "*"
+
+#更改默认连接超时时间：
+hystrix:
+  default:
+    execution:
+      isolation:
+        thread:
+          timeoutInMilliseconds: 5000
+
+#让spring boot暴露查看运行状态的接口:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

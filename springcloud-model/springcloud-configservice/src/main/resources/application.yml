@@ -1,0 +1,27 @@
+#load profile info from git:
+server:
+  port: 1001
+spring:
+  cloud:
+    config:
+      server:
+        encrypt.enabled: false
+        git:
+          uri: https://github.com/WenhaoXu/springcloud_config/
+          searchPaths: todoListService, accountService
+          username: native-cloud-apps
+          password: 123456
+
+#load profile info from file system:
+#server:
+#   port: 8888
+#spring:
+#  profiles:
+#    active: native
+#  cloud:
+#     config:
+#       server:
+#           native:
+#              searchLocations: file://<chapter 3>/confsvr/src/main/resources/config/licensingservice,
+#                               file://<chapter 3>confsvr/src/main/resources/config/organizationservice
+###              #searchLocations: classpath:config/,classpath:config/licensingservice

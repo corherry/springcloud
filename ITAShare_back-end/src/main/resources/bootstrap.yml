@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: todoListService
+  profiles:
+    active:
+      default
+  cloud:
+    config:
+      uri: http://127.0.0.1:1001
+
+server:
+  port: 1004

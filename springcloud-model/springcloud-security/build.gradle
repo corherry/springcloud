@@ -1,0 +1,36 @@
+plugins {
+	id 'org.springframework.boot' version '2.0.5.RELEASE'
+	id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.oocl'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', 'Finchley.SR1')
+}
+
+dependencies {
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-oauth2'
+	implementation 'org.springframework.cloud:spring-cloud-starter-security'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: '2.0.1.RELEASE'
+	compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-config', version: '2.0.1.RELEASE'
+
+
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
